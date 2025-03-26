@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %} Список задач {% endblock %}
+
+{% block content %}
+
+<h1 align="center">Привет! Добро пожаловать на мой сайт по ведению списка задач!</h1>
+<br>
+<p>
+    Всем привет, меня зовут Максим! Вы находитесь на сайте по ведению списка задач.
+    <br>Данный сайт разработан на <b>Python 3.9</b> с помощью фреймворка <b>FastAPI</b>.
+    В проекте используется база данных, общение с которой происходит через библиотеку <b>SQLAlchemy</b>.
+</p>
+<p style="text-indent:25px; margin-top:20px">
+    <br>
+    Здесь Вы можете:<br>
+<ul>
+    <li style="margin-top:20px"><a href='/task/all'> Посмотреть весь список задач </a></li>
+    <li style="margin-top:20px"><a href='/task/add'> Добавить новую задачу </a></li>
+    <li style="margin-top:20px">Отредактировать задачу</li>
+    <li style="margin-top:20px">Удалить задачу</li>
+</ul>
+</p>
+
+{% endblock %}
+
+{% block navigation %}
+{% endblock %}

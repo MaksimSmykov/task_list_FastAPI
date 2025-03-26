@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block title %} Поиск {% endblock %}
+
+{% block content %}
+<h1 align="center">Поиск задач:</h1>
+<br>
+
+{% block navigation %}
+    {{super()}}
+{% endblock %}
+
+<div class="row">
+    <div class="col-12">
+        <table class='table table-bordered table-striped'>
+            <thead>
+                <tr>
+                    <th>Номер</th>
+                    <th>Название</th>
+                    <th>Статус</th>
+                    <th>Приоритет</th>
+                    <th>Доп. информация</th>
+                    <th>Время</th>
+                    <th>Дата</th>
+                    <th>Действие</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for task in found_tasks %}
+                    <tr>
+                        <td> {{task.id}}</td>
+                        <td> <a href ='/task/{{task.id}}'> {{task.title}}</a> </td>
+                        <td>
+                            {% if task.completed == True %}
+                                <div class='alert alert-success' role='alert'>Выполнено</div>
+                            {% else %}
+                                <div class='alert alert-secondary' role='alert'>Не выполнено</div>
+                            {% endif %}
+                        </td>
+                        <td> {{task.priority}}</td>
+                        <td> {{task.add_info}}</td>
+                        <td> {{task.time}}</td>
+                        <td> {{task.date}}</td>
+                        <td>
+                            <a href='/task/edit/{{task.id}}' class="btn btn-success">Редактировать</a> |
+                            <a href='/task/delete/{{task.id}}' class="btn btn-danger">Удалить</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

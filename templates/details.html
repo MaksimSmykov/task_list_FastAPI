@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %} Детали задачи {% endblock %}
+
+{% block content %}
+
+<h1 align="center">Детали задачи:</h1>
+<p><strong>Название:</strong> {{ task.title }} </p>
+<p><strong>Статус:</strong> {{ 'Выполнена' if task.completed else 'Не выполнена' }} </p>
+<p><strong>Приоритет:</strong> {{ task.priority }} </p>
+<p><strong>Дополнительная информация:</strong> {{ task.add_info }} </p>
+<p><strong>Время:</strong> {{ task.time }} </p>
+<p><strong>Дата:</strong> {{ task.date }} </p>
+
+{% endblock %}

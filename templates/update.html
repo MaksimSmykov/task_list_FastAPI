@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block title %} Редактирование задачи {% endblock %}
+
+{% block content %}
+<h1 align="center">Редактировать задачу:</h1>
+<br>
+<form method="post" action="/task/update/{{task.id}}">
+    <div class="row">
+        <div class="col-12">
+            <table class='table table-bordered table-striped'>
+                <thead>
+                <tr>
+                    <th>Номер</th>
+                    <th>Название</th>
+                    <th>Статус</th>
+                    <th>Приоритет</th>
+                    <th>Доп. информация</th>
+                    <th>Время</th>
+                    <th>Дата</th>
+                    <th>Действие</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr style="text-align: center">
+                    <td> {{ task.id }}</td>
+                    <td>
+                        <input type="text" name="title" value="{{ task.title }}" class="form-control"
+                               placeholder="Введите название задачи" aria-label="Название задачи"
+                               aria-describedby="button-addon2"/>
+                    </td>
+                    <td>
+                        {% if task.completed == True %}
+                        <div class='alert alert-success' role='alert'>
+                            <select class="form-select" name="completed" aria-label="Completed">
+                                <option value="False">Не выполнено</option>
+                                <option value="True" selected>Выполнено</option>
+                            </select>
+                        </div>
+                        {% else %}
+                        <div class='alert alert-secondary' role='alert'>
+                            <select class="form-select" name="completed" aria-label="Completed">
+                                <option value="False" selected>Не выполнено</option>
+                                <option value="True">Выполнено</option>
+                            </select>
+                        </div>
+                        {% endif %}
+                    </td>
+                    <td>
+                        <select class="form-select" name="priority" aria-label="Выберите приоритет">
+                            <option value="Низкий" selected>Низкий</option>
+                            <option value="Средний">Средний</option>
+                            <option value="Высокий">Высокий</option>
+                        </select>
+                    </td>
+                    <td>
+                        <input type="text" name="add_info" value="{{ task.add_info }}" class="form-control"
+                               placeholder="Введите дополнительную информацию" aria-label="Название задачи"
+                               aria-describedby="button-addon2"/>
+                    </td>
+                    <td><input type="time" class="form-control" name="time_" value='{{ task.time }}'></td>
+                    <td><input type="date" class="form-control" name="date_" value='{{ task.date }}'></td>
+                    <td>
+                        <input type='submit' value='Сохранить' class='btn btn-primary mb-3'/>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</form>
+{% endblock %}

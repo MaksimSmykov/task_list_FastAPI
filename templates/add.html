@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block title %} Добавление задачи {% endblock %}
+
+{% block content %}
+<h1 align="center">Добавить задачу:</h1>
+<br>
+<section class="container-fluid">
+    <form action="/task/insert" method="post" >
+        <div class="col-auto">
+            <table class='table table-bordered table-striped'>
+                <thead>
+                    <tr>
+                    <th>Название</th>
+                    <th>Приоритет</th>
+                    <th>Доп. информация</th>
+                    <th>Время</th>
+                    <th>Дата</th>
+                    <th>Действие</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr style="text-align: center">
+                    <td> <input type="text" name="title" value="{{ title }}" class="form-control"
+                       placeholder="Введите название задачи" aria-label="Название задачи"
+                       aria-describedby="button-addon1"/>
+                    </td>
+                    <td>
+                        <select class="form-select" name="priority" aria-label="Выберите приоритет">
+                        <option value="Низкий" selected>Низкий</option>
+                        <option value="Средний">Средний</option>
+                        <option value="Высокий">Высокий</option>
+                        </select>
+                    </td>
+                    <td>
+                        <input type="text" name="add_info" value="{{ add_info }}" class="form-control"
+                       placeholder="Введите дополнительную информацию для задачи" aria-label="Дополнительная информация"
+                       aria-describedby="button-addon1"/>
+                    </td>
+                    <td>
+                        <input type="time" class="form-control" name="time_">
+                    </td>
+                    <td>
+                        <input type="date" class="form-control" name="date_">
+                    </td>
+                    <td>
+                        <button class="btn btn-outline-primary" type="submit" id="button-addon1"
+                            data-mdb-ripple-color="dark">Добавить
+                        </button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </form>
+</section>
+{% endblock %}
